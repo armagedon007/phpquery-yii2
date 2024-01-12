@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 // -- Multibyte Compatibility functions ---------------------------------------
 // http://svn.iphonewebdev.com/lace/lib/mb_compat.php
 

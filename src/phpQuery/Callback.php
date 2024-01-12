@@ -5,6 +5,7 @@ interface ICallbackNamed
     function hasName();
     function getName();
 }
+
 /**
  * Callback class introduces currying-like pattern.
  * 
@@ -48,14 +49,17 @@ class Callback implements ICallbackNamed
             $this->params = $params;
         }
     }
+
     public function getName()
     {
         return 'Callback: ' . $this->name;
     }
+
     public function hasName()
     {
         return isset($this->name) && $this->name;
     }
+
     public function setName($name)
     {
         $this->name = $name;
@@ -85,10 +89,12 @@ class CallbackBody extends Callback
     ) {
         $params = func_get_args();
         $params = array_slice($params, 2);
-        $this->callback = create_function($paramList, $code);
+        $this->callback = function ($paramList, $code) {
+        };
         $this->params = $params;
     }
 }
+
 /**
  * Callback type which on execution returns reference passed during creation.
  * 
@@ -102,14 +108,17 @@ class CallbackReturnReference extends Callback implements ICallbackNamed
         $this->reference = &$reference;
         $this->callback = array($this, 'callback');
     }
+
     public function callback()
     {
         return $this->reference;
     }
+
     public function getName()
     {
         return 'Callback: ' . $this->name;
     }
+    
     public function hasName()
     {
         return isset($this->name) && $this->name;
