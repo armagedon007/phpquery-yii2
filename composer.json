@@ -10,8 +10,8 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-            "phpQuery\\": "src/"
+        "psr-0": {
+            "phpQuery": "src"
         }
     },
     "require": {
